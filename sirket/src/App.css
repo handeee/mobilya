@@ -1,0 +1,108 @@
+/* .komponetler{
+    background-color:aliceblue;
+    filter: brightness(0.1) contrast(1.0) saturate(1.2) opacity(0.7);
+   /* transition: filter 0.5s ease-in-out;*/
+    /*transition-duration:infinite;*/
+   /*
+    position: fixed;
+    top: 0;
+   left: 0;
+   width: 100%;
+   padding: 0;
+   margin: 0;
+   height:500px;
+   background-image: url("https://lh3.googleusercontent.com/ELCioxUkXuGp_6MtV36TTjP07grNpn3GIqj-G4oisFrbJmw4chVsaA6uVfbfCNIxyazXztuiyBxRlUkxw6sGrumwgCaNUQ=-rw-w354-rw");
+  background-repeat: no-repeat;
+  background-size: cover;
+  } */
+#b{
+margin-left:26px;
+margin-right:8px;
+}
+
+/* Genel Navbar stili */
+/* Navbar için genel stil */
+
+/* Navbar arka plan rengini kaldır */
+.navbar {
+  background-color: transparent; /* Arka planı şeffaf yapar */
+}
+.projeler{
+margin-top:130px;
+display: flex;
+justify-content: center;
+margin-left:15px;
+
+}
+.altflex{
+  display: flex;
+  gap:45px;
+  justify-content: center;
+  margin-left:80px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.altflex p{
+  font-size:18px;
+}
+.projeler p{
+  font-size:40px;
+}
+/* Projects.css veya App.css */
+
+/* Projects.css veya App.css */
+
+/* Fotoğraf konteynerinin düzeni */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* .photo-container flex yapısını kapsayıcı olarak kullanıyoruz */
+.photo-container {
+  flex: 1;
+  margin: 0 10px; /* Resimler arasındaki boşluk */
+  margin-left:10px;
+  margin-top: 80px;
+}
+
+.photo-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.photo-container img:hover {
+  filter: brightness(0.5) contrast(1.2) saturate(1.2) opacity(0.7);
+}
+.photo-wrapper {
+  margin-left: auto; /* İçerikleri sağa kaydır */
+  display: flex;
+  justify-content: flex-end;
+  width: auto; /* İçeriğin genişliği kadar yer kaplasın */
+  margin-left: 180px;
+  gap:35px;
+ 
+}
+.row h1{
+  margin-left:110px;
+  margin-top: 1px;
+}
+/*iletişim*/
+.iletisimflex{
+  display: flex;
+  margin-top:70px;
+  gap:200px
+}
+.ilebas{
+  margin-left:180px;
+  margin-top: 30px;
+}
+.koyubaslik{
+  font-weight:bold;
+  font-size: 50px;
+  margin-bottom: 25px;
+}
+
