@@ -11,7 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink,Link } from 'react-router-dom';
 import { useState } from 'react';
 import ProjectDetail from './components/ProjectDetail';
-import Try from './components/Try';
+// import Try from './components/Try';
+import Homepagetry from './components/Homepagetry';
 function App() {
   const location = useLocation();
   const [proje,setProje]=useState();
@@ -23,7 +24,7 @@ function App() {
     
 <div className='komponentler'>
   {/* Anasayfa dışındaki kompoenentler */}
-  {location.pathname !== '/' && (
+  {location.pathname !== '/' && location.pathname !== '/Projedeta' &&(
     <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top ">
       <div className="container px-5 d-flex justify-content-between align-items-center">
           <div className='text-start'> {/* İlk sütun: Marka adı */}
@@ -58,7 +59,7 @@ function App() {
     </nav>
   )}
 </div>
-         {location.pathname === '/' && (
+         {/* {location.pathname === '/'  &&(
         <nav className="navbar navbar-expand-lg bg-body-tertiary mt-3 ms-3">
           <div className="container-fluid">
             <Link className="navbar-brand mt-3" to="/">
@@ -106,7 +107,7 @@ function App() {
             </div>
           </div>
         </nav>
-      )}
+      )} */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projeler" element={<Projects submitproject={getproject} />} />
@@ -115,6 +116,7 @@ function App() {
         <Route path="/iletisim" element={<Contact />} />
         <Route path="/Projedetay" element={<ProjectDetail/>}/>
         {/* <Route path="/Protry" element={<Try/>}/> */}
+        <Route path="/Projedeta" element={<Homepagetry/>}/>
       </Routes>
       <p>{proje}</p>
     </div>

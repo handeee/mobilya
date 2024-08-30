@@ -106,3 +106,50 @@ margin-left:15px;
   margin-bottom: 25px;
 }
 
+.ab{
+background-color: aqua;
+}
+
+.bas{
+  font-size: 40px;
+  
+}
+.karousel{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.karousel p {
+  border: 2px solid transparent; /* 20px top border, solid style, black color */
+object-fit: cover;
+
+}
+.carousel-button {
+  position: absolute;
+  background-color: transparent; /* Make the background transparent */
+  border: none; /* Remove the default border */
+  color: white; /* Set the color of the text or icons */
+  font-size: 24px; /* Adjust font size as needed */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  padding: 10px; /* Add some padding */
+  z-index: 10; /* Ensure the buttons are above other content */
+}
+
+.carousel-button.prev {
+  left: 10px; /* Position the previous button on the left */
+}
+
+.carousel-button.next {
+  right: 10px; /* Position the next button on the right */
+}
+.anabas p{
+  font-size:40px;
+  margin-right: 580px;
+  color: aliceblue;
+}
+.proincele{
+  margin-right: 580px;
+  color: aliceblue;
+}

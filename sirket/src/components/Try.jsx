@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import tamamlanan from './resimler/bilkur2.jpg';
 import tamamlanan2 from './resimler/ger.jpg';
