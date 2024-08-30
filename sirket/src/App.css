@@ -153,3 +153,38 @@ object-fit: cover;
   margin-right: 580px;
   color: aliceblue;
 }
+/* Define the animation for image popping out from the corner */
+@keyframes popOutFromCorner {
+  0% {
+    transform: scale(0.8) translateX(-50%) translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateX(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the images inside cards */
+.card-image img {
+  animation: popOutFromCorner 2s ease-out; /* Apply the animation */
+  width: 100%; /* Ensure the image fills the container */
+  height: 300px; /* Fixed height for consistency */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+/* Styling for cards */
+.card {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.3s ease; /* Hover effect transition */
+}
+
+/* Hover effect for card scaling */
+.card:hover {
+  transform: scale(1.05); /* Scale up the card on hover */
+}

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import tamamlanan from './resimler/bilkur2.jpg';
 import tamamlanan2 from './resimler/ger.jpg';
 import tamamlanan3 from './resimler/hc.jpg';
+import './Try.css'; // Import the CSS file
 
 const Try = () => {
   const [resimler, setResimler] = useState([tamamlanan, tamamlanan2, tamamlanan3]);
+  const [navbarVisible, setNavbarVisible] = useState(true);
 
   const handleClick = (nowproject) => {
     switch (nowproject) {
@@ -24,37 +26,54 @@ const Try = () => {
   };
 
   const navigate = useNavigate();
+
   const styles = {
     imgContainer: {
       display: "flex",
       flexWrap: "wrap",
       justifyContent: "center",
-      gap: "20px", // Aradaki boşluğu artırın
+      gap: "20px",
       marginTop: "60px",
-    },
-    img: {
-      width: "100%", // Görüntü genişliği
-      height: "300px", // Sabit bir yükseklik verin
     },
     card: {
       width: "1300px",
-      flex: "1 1 calc(25% - 20px)", // Kartın genişliği: %25 ve aradaki boşluk
-      boxSizing: "border-box", // İç kenar boşluklarını ve sınırları kapsar
+      flex: "1 1 calc(25% - 20px)",
+      boxSizing: "border-box",
       marginBottom: "20px",
       padding: "10px",
       border: "1px solid #ddd",
-      borderRadius: "8px", // Kart köşelerini yuvarlayın
-      maxWidth: "calc(25% - 20px)", // Maksimum genişlik
-      backgroundColor: "#fff", // Arka plan rengi
-      transition: "transform 0.3s ease", // Hover efekti için geçiş
-    },
-    cardHover: {
-      transform: "scale(1.05)", // Hover efekti
+      borderRadius: "8px",
+      maxWidth: "calc(25% - 20px)",
+      backgroundColor: "#fff",
+      transition: "transform 0.3s ease",
     },
     pet: {
       marginTop: "25px",
     },
+    navbar: {
+      transition: "top 0.3s",
+    },
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setNavbarVisible(prevScrollPos => {
+        if (prevScrollPos > currentScrollPos) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    };
+
+    let prevScrollPos = window.scrollY;
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const detayagit = (image) => {
     navigate('/projedetay', { state: { image } });
@@ -62,6 +81,11 @@ const Try = () => {
 
   return (
     <div className="prokapsa">
+      <nav className="navbar" style={{ top: navbarVisible ? "0" : "-50px", ...styles.navbar }}>
+        <div className="navbar-content">
+          {/* Add your navbar content here */}
+        </div>
+      </nav>
       <div className="projeler">
         <p>Projeler</p>
       </div>
@@ -74,18 +98,15 @@ const Try = () => {
       <div style={styles.imgContainer}>
         {resimler.map((resim, index) => (
           <div
-            key={index} // Adding the unique key prop
+            key={index}
             className="card"
             style={styles.card}
-            onMouseEnter={(e) => e.currentTarget.style.transform = styles.cardHover.transform}
-            onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
           >
             <div className="card-image">
               <figure className="image is-4by3">
                 <img
                   src={resim}
-                  alt={`resim-${index}`} // Correct usage of template literal
-                  style={styles.img}
+                  alt={`resim-${index}`}
                   onClick={() => detayagit(resim)}
                 />
               </figure>
