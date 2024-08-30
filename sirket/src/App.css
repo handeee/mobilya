@@ -188,3 +188,23 @@ object-fit: cover;
 .card:hover {
   transform: scale(1.05); /* Scale up the card on hover */
 }
+
+/* Ensure the container takes the full height of its parent */
+.resimkurum {
+  display: flex; /* Use flexbox to position children */
+  justify-content: center; /* Center the image horizontally */
+  align-items: flex-start; /* Align the image to the top */
+  height: 100vh; /* Full viewport height if you want it to cover the screen */
+  margin: 0; /* Remove default margin */
+}
+
+/* Style for the image to make sure it fits and sticks to the top */
+.resimkurum img {
+  width:1000px; /* Ensure the image scales to the width of its container */
+  height:390px; /* Maintain the aspect ratio */
+
+  margin-left:280px;
+}
+.kurumsalaciklama p{
+  margin-bottom: 20px;
+}

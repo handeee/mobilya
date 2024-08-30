@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import tamamlanan from './resimler/bilkur2.jpg';
 import tamamlanan2 from './resimler/ger.jpg';
 import tamamlanan3 from './resimler/hc.jpg';
-import './Try.css'; // Import the CSS file
 
 const Try = () => {
   const [resimler, setResimler] = useState([tamamlanan, tamamlanan2, tamamlanan3]);

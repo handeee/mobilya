@@ -24,7 +24,7 @@ function App() {
     
 <div className='komponentler'>
   {/* Anasayfa dışındaki kompoenentler */}
-  {location.pathname !== '/' && location.pathname !== '/Projedeta' &&(
+  {location.pathname !== '/' && location.pathname !== '/Projedeta'  && location.pathname !== '/kurumsal' &&(
     <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top ">
       <div className="container px-5 d-flex justify-content-between align-items-center">
           <div className='text-start'> {/* İlk sütun: Marka adı */}
