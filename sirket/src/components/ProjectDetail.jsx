@@ -29,7 +29,7 @@ const ProjectDetail = () => {
     <div style={styles.imgContainer} >
       <img
         key={image.index}
-        src={image.resim}
+        src={image.src}
         alt={`image-${image.index}`}
         style={styles.img}
         className="detayresim"
