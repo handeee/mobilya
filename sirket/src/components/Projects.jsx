@@ -5,23 +5,68 @@ import tamamlanan2 from './resimler/ger.jpg';
 import tamamlanan3 from './resimler/hc.jpg';
 
 const Try = () => {
-  const [resimler, setResimler] = useState([tamamlanan, tamamlanan2, tamamlanan3]);
+  // Initial state with all images
+  const [resimler2, setResimler] = useState([tamamlanan, tamamlanan2, tamamlanan3]);
+
+  // Define resimler object with all project details
+  const resimler = {
+    proje1: {
+      id: 1,
+      name: "lotus",
+      description: "sitemiz a şehrinde b bölgesindedir",
+      src: tamamlanan,
+      detaildsc: "Park Rezidans, 1+1 ve 2+1 seçenekleriyle toplamda 15 adet bağımsız daire sunmaktadır.",
+      arsaalani: "1000",
+      location: "antalya",
+      konut: "15",
+      durum: "tamamp"
+    },
+    proje2: {
+      id: 2,
+      name: "b",
+      description: "sitemiz c şehrinde d bölgesindedir",
+      src: tamamlanan2,
+      detaildsc: "Park Rezidans, 1+1 ve 2+1 seçenekleriyle toplamda 15 adet bağımsız daire sunmaktadır.",
+      arsaalani: "2000",
+      location: "istanbul",
+      konut: "25",
+      durum: "tump"
+    },
+    proje3: {
+      id: 3,  // Changed id to 3 to differentiate from proje2
+      name: "c",  // Changed name to differentiate from proje2
+      description: "sitemiz e şehrinde f bölgesindedir", // Changed description to differentiate from proje2
+      src: tamamlanan3,
+      detaildsc: "Park Rezidans, 1+1 ve 2+1 seçenekleriyle toplamda 15 adet bağımsız daire sunmaktadır.",
+      arsaalani: "2000",
+      location: "istanbul",
+      konut: "25",
+      durum: "tump"
+    },
+  };
+
   const [navbarVisible, setNavbarVisible] = useState(true);
 
+  // Create images array from resimler object
+  const images = Object.values(resimler).map((proje) => ({
+    src: proje.src,
+    name: proje.name,
+    description: proje.description,
+    id: proje.id,
+    detaildsc: proje.detaildsc,
+    arsaalani: proje.arsaalani,
+    location: proje.location,
+    konut: proje.konut,
+    durum: proje.durum
+  }));
+
+  // Handle click based on 'durum'
   const handleClick = (nowproject) => {
-    switch (nowproject) {
-      case 'tump':
-        setResimler([tamamlanan, tamamlanan2, tamamlanan3]);
-        break;
-      case 'devamp':
-        setResimler([tamamlanan3, tamamlanan, tamamlanan2]);
-        break;
-      case 'tamamp':
-        setResimler([tamamlanan2, tamamlanan3, tamamlanan]);
-        break;
-      default:
-        setResimler([]);
-    }
+    // Filter images based on the 'durum' matching 'nowproject'
+    const filteredImages = images.filter((image) => image.durum === nowproject);
+
+    // Set 'resimler2' state to the 'src' of the filtered images
+    setResimler(filteredImages.map(image => image.src));
   };
 
   const navigate = useNavigate();
@@ -66,7 +111,6 @@ const Try = () => {
       });
     };
 
-    let prevScrollPos = window.scrollY;
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -75,6 +119,7 @@ const Try = () => {
   }, []);
 
   const detayagit = (image) => {
+    console.log(image)
     navigate('/projedetay', { state: { image } });
   };
 
@@ -89,13 +134,13 @@ const Try = () => {
         <p>Projeler</p>
       </div>
       <div className="altflex">
-        <div><p onClick={() => handleClick('tump')}>Tüm Projeler</p></div>
+        <div><p onClick={() => setResimler(Object.values(images).map(proje => proje.src))}>Tüm Projeler</p></div>
         <div><p onClick={() => handleClick('devamp')}>Devam Eden Projeler</p></div>
         <div><p onClick={() => handleClick('tamamp')}>Tamamlanan Projeler</p></div>
       </div>
 
       <div style={styles.imgContainer}>
-        {resimler.map((resim, index) => (
+        {resimler2.map((resim, index) => (
           <div
             key={index}
             className="card"

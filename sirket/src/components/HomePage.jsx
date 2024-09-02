@@ -54,7 +54,7 @@ const HomePage = () => {
   }, [images.length]);
 
   const detayagit = (image) => {
-     console.log(image)
+   
     navigate('/projedetay', { state: { image } });
   };
 
