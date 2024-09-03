@@ -31,14 +31,14 @@ margin-right:8px;
 margin-top:130px;
 display: flex;
 justify-content: center;
-margin-left:15px;
+margin-left:85px;
 
 }
 .altflex{
   display: flex;
   gap:45px;
   justify-content: center;
-  margin-left:80px;
+  margin-left:150px;
   margin-top:20px;
   margin-bottom:20px;
 }
@@ -208,3 +208,11 @@ object-fit: cover;
 .kurumsalaciklama p{
   margin-bottom: 20px;
 }
+/* prodetay yan*/
+.yanbilgi{
+  display:flex;
+  margin-top:20px;
+  gap:60px,
+ 
+}
+

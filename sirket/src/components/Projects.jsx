@@ -5,10 +5,11 @@ import tamamlanan2 from './resimler/ger.jpg';
 import tamamlanan3 from './resimler/hc.jpg';
 
 const Try = () => {
-  // Initial state with all images
+  const navigate = useNavigate();
+  const [navbarVisible, setNavbarVisible] = useState(true);
   const [resimler2, setResimler] = useState([tamamlanan, tamamlanan2, tamamlanan3]);
 
-  // Define resimler object with all project details
+  // Define project data
   const resimler = {
     proje1: {
       id: 1,
@@ -30,24 +31,22 @@ const Try = () => {
       arsaalani: "2000",
       location: "istanbul",
       konut: "25",
-      durum: "tump"
+      durum: "devamp"
     },
     proje3: {
-      id: 3,  // Changed id to 3 to differentiate from proje2
-      name: "c",  // Changed name to differentiate from proje2
-      description: "sitemiz e şehrinde f bölgesindedir", // Changed description to differentiate from proje2
+      id: 3,
+      name: "c",
+      description: "sitemiz e şehrinde f bölgesindedir",
       src: tamamlanan3,
       detaildsc: "Park Rezidans, 1+1 ve 2+1 seçenekleriyle toplamda 15 adet bağımsız daire sunmaktadır.",
       arsaalani: "2000",
       location: "istanbul",
       konut: "25",
-      durum: "tump"
+      durum: "devamp"
     },
   };
 
-  const [navbarVisible, setNavbarVisible] = useState(true);
-
-  // Create images array from resimler object
+  // Convert resimler object to an array of projects
   const images = Object.values(resimler).map((proje) => ({
     src: proje.src,
     name: proje.name,
@@ -64,39 +63,14 @@ const Try = () => {
   const handleClick = (nowproject) => {
     // Filter images based on the 'durum' matching 'nowproject'
     const filteredImages = images.filter((image) => image.durum === nowproject);
-
     // Set 'resimler2' state to the 'src' of the filtered images
     setResimler(filteredImages.map(image => image.src));
   };
 
-  const navigate = useNavigate();
-
-  const styles = {
-    imgContainer: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      gap: "20px",
-      marginTop: "60px",
-    },
-    card: {
-      width: "1300px",
-      flex: "1 1 calc(25% - 20px)",
-      boxSizing: "border-box",
-      marginBottom: "20px",
-      padding: "10px",
-      border: "1px solid #ddd",
-      borderRadius: "8px",
-      maxWidth: "calc(25% - 20px)",
-      backgroundColor: "#fff",
-      transition: "transform 0.3s ease",
-    },
-    pet: {
-      marginTop: "25px",
-    },
-    navbar: {
-      transition: "top 0.3s",
-    },
+  // Navigate to project detail page
+  const detayagit = (imageSrc) => {
+    const selectedImage = images.find(image => image.src === imageSrc);
+    navigate('/projedetay', { state: { image: selectedImage } });
   };
 
   useEffect(() => {
@@ -118,9 +92,34 @@ const Try = () => {
     };
   }, []);
 
-  const detayagit = (image) => {
-    console.log(image)
-    navigate('/projedetay', { state: { image } });
+  const styles = {
+    imgContainer: {
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      gap: "20px",
+      marginTop: "60px",
+    },
+    card: {
+      width: "400px",
+      flex: "1 1 calc(25% - 20px)",
+      boxSizing: "border-box",
+      marginBottom: "20px",
+      padding: "10px",
+      border: "1px solid #ddd",
+      borderRadius: "8px",
+      maxWidth: "calc(50% - 20px)",
+      backgroundColor: "#fff",
+      transition: "transform 0.3s ease",
+      cursor: "pointer",
+      marginLeft:"68px"
+    },
+    pet: {
+      marginTop: "25px",
+    },
+    navbar: {
+      transition: "top 0.3s",
+    },
   };
 
   return (
@@ -134,7 +133,7 @@ const Try = () => {
         <p>Projeler</p>
       </div>
       <div className="altflex">
-        <div><p onClick={() => setResimler(Object.values(images).map(proje => proje.src))}>Tüm Projeler</p></div>
+        <div><p onClick={() => setResimler(images.map(proje => proje.src))}>Tüm Projeler</p></div>
         <div><p onClick={() => handleClick('devamp')}>Devam Eden Projeler</p></div>
         <div><p onClick={() => handleClick('tamamp')}>Tamamlanan Projeler</p></div>
       </div>
@@ -145,27 +144,24 @@ const Try = () => {
             key={index}
             className="card"
             style={styles.card}
+            onClick={() => detayagit(resim)}
           >
             <div className="card-image">
               <figure className="image is-4by3">
                 <img
                   src={resim}
                   alt={`resim-${index}`}
-                  onClick={() => detayagit(resim)}
                 />
               </figure>
             </div>
             <div className="card-content">
               <div className="media">
                 <div className="media-content">
-                  <p className="title is-4" style={styles.pet}>abc</p>
+                  <p className="title is-4" style={styles.pet}>{images.find(image => image.src === resim)?.name}</p>
                 </div>
               </div>
               <div className="content">
-                <p>{/* Placeholder for description or any content */}</p>
-              </div>
-              <div className="content">
-                <p>{/* Placeholder for price or any content */}</p>
+                <p>{images.find(image => image.src === resim)?.description}</p>
               </div>
             </div>
           </div>
