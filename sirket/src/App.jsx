@@ -11,8 +11,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink,Link } from 'react-router-dom';
 import { useState } from 'react';
 import ProjectDetail from './components/ProjectDetail';
+import Resimaltcizgi from './components/Resimaltcizgi';
 // import Try from './components/Try';
-import Homepagetry from './components/Homepagetry';
+// import Homepagetry from './components/Homepagetry';
 function App() {
   const location = useLocation();
   const [proje,setProje]=useState();
@@ -116,9 +117,12 @@ function App() {
         <Route path="/iletisim" element={<Contact />} />
         <Route path="/Projedetay" element={<ProjectDetail/>}/>
         {/* <Route path="/Protry" element={<Try/>}/> */}
-        <Route path="/Projedeta" element={<Homepagetry/>}/>
+        {/* <Route path="/Projedeta" element={<Homepagetry/>}/> */}
+      
+        
       </Routes>
-      <p>{proje}</p>
+      {/* <p>{proje}</p>
+      <Resimaltcizgi/> */}
     </div>
   );
 }
