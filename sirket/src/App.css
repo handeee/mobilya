@@ -253,3 +253,11 @@ margin-top: 20px;
   margin-left: 3px;
  font-weight: bold;
 }
+.re img{
+ width:1000px;
+ height:580px;
+ margin-left: 150px;
+ z-index:-1;
+
+
+}
